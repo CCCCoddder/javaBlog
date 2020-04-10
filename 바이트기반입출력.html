@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>자바 메모-바이트 기반 입출력</title>
+    <style>
+      a {
+        color:black;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./자바blog.html"><h1>자바 블로그</h1></a>
+    <ul>
+      <li><a href="#">스트림</a></li>
+      <li><a href="./바이트기반입출력.html">자바 입출력</a></li>
+      <li><a href="#">직렬화</a></li>
+      <li><a href="#">스레드</a></li>
+    </ul>
+    <h2>자바 입출력</h2>
+    <ul>
+      <li><a href="./바이트기반입출력.html">바이트 기반 입출력</a></li>
+      <li><a href="./문자기반입출력.html">문자 기반 입출력</a></li>
+      <li><a href="./보조스트림.html">보조 스트림</a></li>
+    </ul>
+    <p>
+      자바 입출력에는 두 가지 종류가 있다.<br>
+      힌 바이트씩 읽고 쓰는 바이트 단위 스트림이 있고 두 바이트씩 읽고 쓰는 문자 단위 스트림이다. <br>
+      단일 바이트 단위 스트림에는 클래스 이름 마지막에 stream이 붙는다. <br>
+      ex) FileInputStream,BufferedInputStream,등등 <br>
+      쌍 바이트 단위 스트림은 클래스 이름 마지막에 reader나 writer가 붙는다. <br>
+      ex) FileReader,InputStreamReader,등등 <br>
+    </p>
+
+    <p>
+      InputStream인 System.in 과 보조스트림인 BufferedInputStream 사용 예제. <br>
+      <img src="./자바입출력/자바1 .jpg" alt="error"> <br>
+      읽은 바이트를 문자로 반환하는 InputStreamReader를 생성, while문을 통해 뉴라인을 만날때 까지 읽어 문자형으로 출력합니다. <br>
+      InputStreamReader는 기반스트림에 기능을 추가하는 보조스트림이기 때문에 생성시 인자로 기반스트림을 받습니다. <br>
+      그리고 입출력은 무조건 try-catch로 감싸서 예외를 처리해 주어야합니다. <br>
+      결과↓ <br>
+      <img src="./자바입출력/자바1결과.jpg" alt="error">
+    </p>
+
+    <p>
+      FileInputStream 과 FileOutputStream 사용하기. <br>
+      <img src="./자바입출력/FileReaderTest.jpg" alt="error"> <br>
+      FileInputStream 과 FileOutputStream 을 사용하여 사용자로부터 입력받은 일련의 문자들을 alpha.txt 라는 파일에 써서 저장하고 그것을 읽어들이는 에제입니다. <br>
+      바이트 배열 bs 를 선언하여 System.in 이라는 InputStream 을 사용하여 사용자로부터 입력을 받습니다. <br>
+      원래 모든 IO 클래스는 사용후 close메소드를 통해 닫아주어야하지만, System.in은 기본 입출력 이기 때문에 닫지 않아도 괜찮습니다. <br>
+      두번째 try/catch구문에서는 try후 소괄호안에 io클래스들을 선언하고있는데 이렇게 선언된 구문은 try with resources 라는 구문으로, 소괄호 안 io클래스가 autocloseable <br>
+      하다면 굳이 finally를 만들어 close하지 않아도 됩니다. <br>
+      fos로 bs에 담긴 값을 alpha.txt에 write 한 후 fis로 read하고있습니다. <br>
+      이 과정을 거치고 실행시키면 다음과 같은 결과가 나옵니다. <br>
+      <img src="./자바입출력/결과2.jpg" alt="error"> <br>
+      사용자가 입력한 FileStream Testing 이 read를 통해 잘 출력되고 있습니다. <br>
+      read는 확인되었는데 write부분은 어떻게 됐을까요? <br>
+      <img src="./자바입출력/파일목록.jpg" alt="error"> <br>
+      현재 프로젝트 폴더에 alpha.txt 라는 파일이 생긴것을 확인 할 수 있습니다. <br>
+      <img src="./자바입출력/alpha.jpg" alt="error"> <br>
+      파일을 열어보니 FileStream Testing 이 잘 적혀있는 것을 볼 수 있습니다.
+    </p>
+  </body>
+</html>
