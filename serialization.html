@@ -29,21 +29,21 @@
     </p>
 
     <p>
-      <img src="./자바입출력/serialization1-member.png" alt="error"> <br>
+      <img src="./source/직렬화/serialization1-member.png" alt="error"> <br>
       member라는 이름의 클래스를 인스턴스화 한것을 직렬화 하여 저장해 보자.
       member는 멤버변수로 이름과 아이디를 두고 있다. get/setter는 일단 생략하기로 한다. <br>
-      <img src="./자바입출력/serialization1.png" alt="error"> <br>
+      <img src="./source/직렬화/serialization1.png" alt="error"> <br>
       바이트 단위 파일 입출력인 FileInputStream을 기반스트림으로 두고 ObjectOutputStream을 보조스트림으로 기능을 추가하였다.
       writeObject 메소드를 이용하여 인스턴스화된 member를 쓰고있다.
       이제 파일이 잘 생성되었는지 확인하여보자.<br>
-      <img src="./자바입출력/serialization1-dat.png" alt="error"><br>
+      <img src="./source/직렬화/serialization1-dat.png" alt="error"><br>
       personInfo.dat이라는 파일이 생성되었다.
       인스턴스를 저장한 이 파일은 외부시스템에서 역직렬화를 통해 읽어들여 사용되어진다.
       역직렬화하는 예제를 보자.<br>
-      <img src="./자바입출력/deserialization1.png" alt="error"><br>
+      <img src="./source/직렬화/deserialization1.png" alt="error"><br>
       직렬화 할때와 마찬가지로 FileInputStream을 ObjectInputStream으로 감싸서 스트림을 사용한다.
       readObject를 할 때 주의할 점은 같은 타입으로 캐스팅 해주어야 한다.<br>
-      <img src="./자바입출력/deserialization1-outcome.png" alt="error"><br>
+      <img src="./source/직렬화/deserialization1-outcome.png" alt="error"><br>
       직렬화 할 때 담겼던 정보가 그대로 역직렬화 되어 잘 출력되는 모습이다.
     </p>
   </body>
