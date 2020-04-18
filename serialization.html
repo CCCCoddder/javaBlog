@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>자바 메모-직렬화</title>
-    <style>
-      a {
-        color:black;
-        text-decoration: none;
-      }
-    </style>
-  </head>
-  <body>
-    <h1><a href="./자바blog.html">자바 블로그</a></h1>
-    <ul>
-      <li><a href="#">스트림</a></li>
+
+<head>
+  <meta charset="utf-8">
+  <title>자바 메모-직렬화</title>
+  <link rel="stylesheet" href="./css/content-2.css">
+  <style>
+    img{
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1><a href="./자바blog.html">자바 블로그</a></h1>
+  <div id=grid>
+    <ol>
+      <li><a href="./stream.html">스트림</a></li>
       <li><a href="./바이트기반입출력.html">자바 입출력</a></li>
       <li><a href="./serialization.html">직렬화</a></li>
       <li><a href="#">스레드</a></li>
-    </ul>
+    </ol>
+    <div id=article>
 
-    <h2>직렬화</h2>
-    <p>
-      직렬화는 인스턴스의 상태를 그대로 저장하거나 네트워크로 전송하고 이를 다시 복원(Deserialization)하는 작업이다.
-      인스턴스의 정보가 담긴파일을 외부 다른 시스템에서 사용할 수 있도록 하는 것이다.
-      직렬화에는 ObjectInputStream과 ObjectOutputStream을 사용한다.
-      직렬화는 인스턴스 내용이 외부로 유출되는 것이므로 프로그래머가 객체의 직렬화 가능 여부를 명시한다.
-      구현코드가 없는 mark interface(Serializable)를 implement한다.
-    </p>
+      <h2>직렬화</h2>
+      <p>
+        직렬화는 인스턴스의 상태를 그대로 저장하거나 네트워크로 전송하고 이를 다시 복원(Deserialization)하는 작업이다.
+        인스턴스의 정보가 담긴파일을 외부 다른 시스템에서 사용할 수 있도록 하는 것이다.
+        직렬화에는 ObjectInputStream과 ObjectOutputStream을 사용한다.
+        직렬화는 인스턴스 내용이 외부로 유출되는 것이므로 프로그래머가 객체의 직렬화 가능 여부를 명시한다.
+        구현코드가 없는 mark interface(Serializable)를 implement한다.
+      </p>
 
-    <p>
-      <img src="./source/직렬화/serialization1-member.png" alt="error"> <br>
-      member라는 이름의 클래스를 인스턴스화 한것을 직렬화 하여 저장해 보자.
-      member는 멤버변수로 이름과 아이디를 두고 있다. get/setter는 일단 생략하기로 한다. <br>
-      <img src="./source/직렬화/serialization1.png" alt="error"> <br>
-      바이트 단위 파일 입출력인 FileInputStream을 기반스트림으로 두고 ObjectOutputStream을 보조스트림으로 기능을 추가하였다.
-      writeObject 메소드를 이용하여 인스턴스화된 member를 쓰고있다.
-      이제 파일이 잘 생성되었는지 확인하여보자.<br>
-      <img src="./source/직렬화/serialization1-dat.png" alt="error"><br>
-      personInfo.dat이라는 파일이 생성되었다.
-      인스턴스를 저장한 이 파일은 외부시스템에서 역직렬화를 통해 읽어들여 사용되어진다.
-      역직렬화하는 예제를 보자.<br>
-      <img src="./source/직렬화/deserialization1.png" alt="error"><br>
-      직렬화 할때와 마찬가지로 FileInputStream을 ObjectInputStream으로 감싸서 스트림을 사용한다.
-      readObject를 할 때 주의할 점은 같은 타입으로 캐스팅 해주어야 한다.<br>
-      <img src="./source/직렬화/deserialization1-outcome.png" alt="error"><br>
-      직렬화 할 때 담겼던 정보가 그대로 역직렬화 되어 잘 출력되는 모습이다.
-    </p>
-  </body>
+      <p>
+        <img src="./source/직렬화/serialization1-member.png" alt="error">
+        member라는 이름의 클래스를 인스턴스화 한것을 직렬화 하여 저장해 보자.
+        member는 멤버변수로 이름과 아이디를 두고 있다. get/setter는 일단 생략하기로 한다.
+        <img src="./source/직렬화/serialization1.png" alt="error">
+        바이트 단위 파일 입출력인 FileInputStream을 기반스트림으로 두고 ObjectOutputStream을 보조스트림으로 기능을 추가하였다.
+        writeObject 메소드를 이용하여 인스턴스화된 member를 쓰고있다.
+        이제 파일이 잘 생성되었는지 확인하여보자.
+        <img src="./source/직렬화/serialization1-dat.png" alt="error">
+        personInfo.dat이라는 파일이 생성되었다.
+        인스턴스를 저장한 이 파일은 외부시스템에서 역직렬화를 통해 읽어들여 사용되어진다.
+        역직렬화하는 예제를 보자.
+        <img src="./source/직렬화/deserialization1.png" alt="error">
+        직렬화 할때와 마찬가지로 FileInputStream을 ObjectInputStream으로 감싸서 스트림을 사용한다.
+        readObject를 할 때 주의할 점은 같은 타입으로 캐스팅 해주어야 한다.
+        <img src="./source/직렬화/deserialization1-outcome.png" alt="error">
+        직렬화 할 때 담겼던 정보가 그대로 역직렬화 되어 잘 출력되는 모습이다.
+      </p>
+    </div>
+
+  </div>
+</body>
+
 </html>

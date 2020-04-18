@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>자바 메모-보조스트림</title>
+  <link rel="stylesheet" href="./css/content-2.css">
+  <style>
+    img{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="./자바blog.html">
+    <h1>자바 블로그</h1>
+  </a>
+  <div id="grid">
+    <ol>
+      <li><a href="./stream.html">스트림</a></li>
+      <li><a href="./바이트기반입출력.html">자바 입출력</a></li>
+      <li><a href="./serialization.html">직렬화</a></li>
+      <li><a href="#">스레드</a></li>
+    </ol>
+    <div id="article">
+      <h2>자바 스트림 api 사용법</h2>
+      <p>
+        FileInputStream 같이 Input or OutputStream 과는 다른 의미의 stream이 자바에는 존재한다.
+        이 stream이란 것은 람다를 활용한 기술 중 하나로, 이 stream이 있기 전까지 자바는 컬렉션
+        인스턴스를 for 나 foreach 처럼 반복문을 통해 요소를 하나하나 꺼내며 다뤘었다.
+        간단한 작업에는 이런 반복문을 통한 참조가 별 문제가 없으나 로직이 복잡해 질 수록 반복문을
+        여러번 돌게되어 코드양이 많아져 지저분해지고 가독성도 떨어지게 된다.
+      </p>
+       <p>
+        이때 스트림을 사용하면 일련의 함수들만 단편적으로 조합하여 짧은 코드를 통해 원하는 결과를
+        얻을 수 있다.<br>
+        스트림에는 크게 3가지 단계로 구분 지을 수 있다.
+      </p>
+      <ol>
+        <li>생성하기</li>
+        <li>가공하기</li>
+        <li>결과만들기</li>
+      </ol>
+      <img src="./source/스트림/stream1.png" alt="error">
+      <p>
+        컬렉션에서 스트링을 생성하는 방법은 다음과 같다.
+        컬렉션.stream(); stream()메소드는 스트림객체를 반환한다.
+        위 예제에서 list.stream()을 통해 스트림을 생성 해 주었고 map연산으로 각각의 요소를 길이값으로
+        치환 하고 foreach연산으로 결과를 출력해 주었다.
+        map은 중간연산 중 하나로 요소를 다른 어떤 값으로 바꾸기 위한 연산이다.
+        map은 function 이라는 함수형 인터페이스를 매개로 받아 연산을 처리한다.
+        스트림에서 중요한 것은 중간연산에서 그치면 안된다는 것이다. 결과연산을 해주어야만 어떠한 결과물을
+        도출 해낼 수 있다.
+      </p>
+      <img src="./source/스트림/stream1-결과.png" alt="error">
+      <p>
+        스트림은 한 번 사용한 스트림을 다시 사용 할 수 없기 때문에 다시 사용하려면 또 만들어야한다는
+        특징이 있고 어떤 결과를 도출 한다고 해서 본래의 자료값을 바꾸진 않는다. 다른메모리에서
+        연산이 진행 될 뿐이다.
+      </p>
+      <img src="./source/스트림/stream2.png" alt="error">
+      <p>
+        중간연산은 map만 있는 것이 아니다. 대표적으로 filter메소드도 존재하는데 이 메소드는 predicate
+        함수형 인터페이스를 통해 각 요소가 람다로 전해지는 조건에 부합하는 것만 남긴다.
+        x -> x.contains("l") 은 l을 포함하는 문자열만 리턴한다.
+      </p>
+      <img src="./source/스트림/stream3.png" alt="error">
+      <p>
+        결과 연산도 여러가지가 존재한다. foreach말고도 sum, count, reduce등등 여럿 존재한다.
+        예제는 count연산결과이다. filter로 걸러진 요소는 2개이고 count는 요소의 총 개수를 반환한다.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
